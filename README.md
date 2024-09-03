@@ -2,19 +2,18 @@
 
 ## **Overview**
 
-This project is a Python-based web scraper designed to extract structured data from a Wikipedia page. The scraper targets multiple sections of the page, such as the infobox, references, external links, and the introduction paragraph. The extracted data can be used for various purposes, such as research, analysis, or simply gathering information in an organized format.
+This project is a Python-based web scraper designed to extract structured data from a Wikipedia page. The scraper specifically targets the infobox on the page, which typically contains key information such as population, area, capital city, and more. The extracted data is then displayed in a readable format.
 
 ## **Features**
 
-- **Data Extraction from Multiple Sections**: 
-  - **Infobox**: Extracts key information such as capital, population, area, etc.
-  - **Introduction Paragraph**: Extracts the first paragraph of the Wikipedia page.
-  - **References**: Gathers the list of references cited on the page.
-  - **External Links**: Extracts links to external websites from the "External links" section.
+- **Infobox Data Extraction**: 
+  - Extracts key information such as the capital, population, area, and more from the infobox of a Wikipedia page.
+  
+- **Enhanced Logging**: 
+  - The scraper includes a logging system that records all operations and errors in a log file (`scraper.log`). This makes it easier to debug and trace the execution flow.
 
-- **Enhanced Logging**: The scraper is equipped with a logging system that records all operations and errors to a log file (`scraper.log`), making it easier to debug and trace the execution flow.
-
-- **Error Handling**: Robust error handling is implemented to manage network issues, HTTP errors, and parsing issues.
+- **Error Handling**: 
+  - Robust error handling is implemented to manage network issues, HTTP errors, and parsing issues.
 
 ## **Requirements**
 
@@ -22,7 +21,7 @@ This project is a Python-based web scraper designed to extract structured data f
 - **Libraries**:
   - `requests`
   - `beautifulsoup4`
-  - `logging`
+  - `logging` (part of Python's standard library)
 
 ## **Setup**
 
@@ -50,7 +49,7 @@ This project is a Python-based web scraper designed to extract structured data f
 
 1. **Running the Scraper**:
 
-   To run the scraper, simply execute the `scraper.py` script. By default, it scrapes data from the Wikipedia page for Japan.
+   To run the scraper, execute the `scraper.py` script. By default, it scrapes data from the Wikipedia page for Japan.
 
    ```bash
    python scraper.py
@@ -58,7 +57,7 @@ This project is a Python-based web scraper designed to extract structured data f
 
 2. **Extracted Data**:
 
-   After running the scraper, the extracted data from the Wikipedia page will be displayed in the console. The data includes information from the infobox, the introductory paragraph, references, and external links.
+   After running the scraper, the extracted data from the Wikipedia page will be displayed in the console. The data includes information such as the capital, population, area, and more from the infobox.
 
 3. **Log File**:
 
@@ -66,7 +65,7 @@ This project is a Python-based web scraper designed to extract structured data f
 
 ## **Code Structure**
 
-- **`scraper.py`**: The main script that contains the logic for fetching the page, parsing the HTML content, and displaying the extracted data.
+- **`scraper.py`**: The main script containing the logic for fetching the page content, parsing the HTML, and displaying the extracted data.
 - **`scraper.log`**: A log file that records the operations and errors encountered by the scraper.
 
 ## **Functions**
@@ -75,21 +74,9 @@ This project is a Python-based web scraper designed to extract structured data f
   - Fetches the HTML content of the specified URL.
   - Handles HTTP errors and logs all operations.
 
-- **`parse_infobox(soup)`**:
+- **`parse_infobox(html_content)`**:
   - Extracts key information from the infobox on the page.
   - Returns a dictionary of the extracted data.
-
-- **`parse_introduction(soup)`**:
-  - Extracts the first paragraph of the page (typically the introduction).
-  - Returns the paragraph as a string.
-
-- **`parse_references(soup)`**:
-  - Extracts the list of references cited on the page.
-  - Returns a list of reference texts.
-
-- **`parse_external_links(soup)`**:
-  - Extracts external links from the "External links" section.
-  - Returns a list of URLs.
 
 - **`display_data(data)`**:
   - Displays the extracted data in a readable format in the console.
@@ -98,9 +85,6 @@ This project is a Python-based web scraper designed to extract structured data f
 
 - **Target URL**:
   - The scraper is currently set to target the Wikipedia page for Japan. You can change the `url` variable in the `__main__` block to target a different Wikipedia page or another website.
-
-- **Sections to Extract**:
-  - The scraper is modular, allowing you to easily add or remove sections that you want to extract. Simply add or remove the corresponding function calls in the `data` dictionary in the `__main__` block.
 
 ## **Contributing**
 
